@@ -24,12 +24,37 @@ jQuery(function ($) {
 		var card_id =$(this).attr("data-id");
 		var d = data;
 		for (var i = 0; i < d["cards"].length; i++) {
-			if (d["cards"][i]["id"] == card_id) {d["cards"][i]["anzahl"]++; break; }
+			if (d["cards"][i]["id"] == card_id) {
+				if (typeof window.document.get["arena"] !== "undefined" && window.document.get["arena"] == "0") d["cards"][i]["anzahl"] = Math.min(2,d["cards"][i]["anzahl"]+1);
+				else d["cards"][i]["anzahl"]++; 
+				break; 
+				}
 		}
 		var url = reparser(d);
 		document.location.hash = url;
 		return false;
 	});
+	
+	$("body").append('<div class="hovercard" style="display:none;"></div>');
+	$(document).on("mousemove","ul.cards",function(e) {
+		var x = e.pageX+10;
+        var y = e.pageY+5;
+		$("div.hovercard").css("left",x+"px").css("top",y+"px");
+	});
+	$(document).on("mouseover","ul.cards li",function() {
+		$("div.hovercard").css("display","block").attr("data-card",$(this).attr("data-id"));
+		
+	});
+	$(document).on("mouseout","ul.cards ",function() {
+		$("div.hovercard").css("display","none");
+	});
+	/*$("div.hovercard").qtip({
+         content: 'Mouse tracking!',
+         position: {
+             target: 'mouse', // Track the mouse as the positioning target
+             adjust: { x: 5, y: 5 } // Offset it slightly from under the mouse
+         }
+     });*/
   
   
   
@@ -84,6 +109,7 @@ function parser() {
 		if (typeof window.document.get["arena"] !== "undefined" && window.document.get["arena"] == "0") match[2] = Math.min(2,parseInt(match[2]));
 		var b = { id: parseInt(match[1]), anzahl: parseInt(match[2])};
 		var d = get_carddata(b["id"]);
+		if (d["class"] > 0 && out["class"] != d["class"]) continue;
 		if (d == null) continue;
 		else {
 			b["name"] = d["name_"+lang_short];

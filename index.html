@@ -1,9 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hearthstone Deckbuilder</title>
+<title>Hearthstone Cardcounter</title>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.getpost.js"></script>
+<script src="js/db_cards.js"></script>
+<script src="js/main_index.js"></script>
+<link rel="stylesheet" title="Gold (right, fixed) + navbar" href="skins/andi01/main_index.css">
 </head>
 <body>
+<div class="overall">
+	<section class="chooseclass">
+	<h1>Klassenauswahl</h1>
+	<div>
+		<a href="#c1;;">Krieger</a>
+		<a href="#c2;;">Schamane</a>
+		<a href="#c3;;">Schurke</a>
+		<a href="#c4;;">Paladin</a>
+		<a href="#c5;;">Jäger</a>
+		<a href="#c6;;">Druide</a>
+		<a href="#c7;;">Hexenmeister</a>
+		<a href="#c8;;">Magier</a>
+		<a href="#c9;;">Priester</a>
+	</div>
+	</section>
+	<section class="choosecards">
+		<div class="header">
+		<a href="#" class="class" title="zurück zur Klassenwahl"></a>
+		<INPUT type="search" name="query"/><ul class="search_autocomplete"></ul>
+		<div class="manawahl">
+			<span class="mana manaall active" data-value="">alle</span>
+			<span class="mana mana0" data-value="0">0</span>
+			<span class="mana mana1" data-value="1">1</span>
+			<span class="mana mana2" data-value="2">2</span>
+			<span class="mana mana3" data-value="3">3</span>
+			<span class="mana mana4" data-value="4">4</span>
+			<span class="mana mana5" data-value="5">5</span>
+			<span class="mana mana6" data-value="6">6</span>
+			<span class="mana mana7" data-value="7">7+</span>
+		</div>
+		<ul class="cardgroup">
+			<li class="class">Klasse</li>
+			<li class="neutral">Neutral</li>
+			<li class="naxxramas">Naxxramas</li>
+		</ul>
+		</div>
+		<ul class="allcards">
+		</ul>
+		<div class="deckhead">
+			<span class="name"></span>
+			<INPUT type="text" name="name" placeholder="Mein Deck"/>
+		</div>
+		<div class="managraph">
+			<div class="mana0"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana1"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana2"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana3"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana4"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana5"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana6"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana7"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+		</div>
+		<ul class="selcards"></ul>
+		<div class="cardcount"><span class="value">0</span>/30</div>
+		<ul class="stats">
+			<li class="minion"><label>Diener:</label><span class="value">0</span></li>
+			<li class="spell"><label>Zauber:</label><span class="value">0</span></li>
+			<li class="weapon"><label>Waffen:</label><span class="value">0</span></li>
+			<li class="battlecry"><label>Kampfschrei:</label><span class="value">0</span></li>
+			<li class="stealth"><label>Verstohlenheit:</label><span class="value">0</span></li>
+			<li class="charge"><label>Ansturm:</label><span class="value">0</span></li>
+			<li class="deathrattle"><label>Todesschrei:</label><span class="value">0</span></li>
+			<li class="shield"><label>Schild:</label><span class="value">0</span></li>
+			<li class="enrage"><label>Enrage:</label><span class="value">0</span></li>
+			<li class="freeze"><label>Freeze:</label><span class="value">0</span></li>
+			<li class="overload"><label>Überladen:</label><span class="value">0</span></li>
+			<li class="secret"><label>Geheimnis:</label><span class="value">0</span></li>
+			<li class="silence"><label>Stille:</label><span class="value">0</span></li>
+			<li class="spelldmg"><label>Spell Damage:</label><span class="value">0</span></li>
+			<li class="summon"><label>Beschwörung:</label><span class="value">0</span></li>
+			<li class="windfury"><label>Windzorn:</label><span class="value">0</span></li>
+			<li class="taunt"><label>Spott:</label><span class="value">0</span></li>
+		</ul>
+	</section>
+</div>
+
 
 </body>
 </html>

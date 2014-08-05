@@ -5,7 +5,6 @@ img { border: 0px; }
 
 .overall { max-width: 286px; min-height: 100%;  background: url(img/counter/bg01.png) repeat-y center top; margin: 0px auto; }
 div.deckhead { display: block; position: relative; width: 254px; height: 101px; margin: 0px auto; }
-div.deckhead[data-class="6"] { ; background: url(img/counter/classes/class6_01.png) no-repeat center center;}
 div.deckhead .name { position: absolute; bottom: 21px; left: 22px; color: white; line-height:28px; font-family: 'Yanone+Kaffeesatz', Arial; font-size:14px; font-weight:bold;}
 div.deckhead .cardcount { position: absolute; right: 20px; bottom: 20px; color: #ff0; background: #008; font-weight:bold; padding: 2px 4px; border-radius: 10px; opacity: 0.75; }
 
@@ -15,7 +14,7 @@ ul.cards .cardname { display: none; }
 ul.cards span.anzahl { position: absolute; right: 5px; line-height: 37px; font-size:20px; color: #FFC800; font-weight:bold; text-shadow: #000 0px 0px 1px; opacity: 0.9; }
 ul.cards span.anzahl1 { display: none; }
 ul.cards span.anzahl0 { display: none; }
-ul.cards span.prozent { position: absolute; right: 20px; line-height: 37px; color: white; font-size:15px; text-shadow: #000 0px 0px 1px, #000 0px 0px 1px; }
+ul.cards span.prozent { position: absolute; right: 20px; line-height: 37px; color: white; font-size:15px; text-shadow: #000 0px 0px 1px, #000 0px 0px 1px;  }
 ul.cards > li[data-anzahl="0"] { opacity: 0.8; filter: grayscale(100%);
 -webkit-filter: grayscale(100%);
 -moz-filter: grayscale(100%);
@@ -25,7 +24,27 @@ filter: url(desaturate.svg#greyscale);
 filter: gray;
 -webkit-filter: grayscale(1); }
 ul.cards > li[data-anzahl="0"] .prozent { display: none; }
-ul.cards li.card473 { background-image: url(img/counter/cards/473.png); }
-ul.cards li.card532 { background-image: url(img/counter/cards/532.png); }
-ul.cards li.card548 { background-image: url(img/counter/cards/548.png); }
-ul.cards li.card619 { background-image: url(img/counter/cards/619.png); }
+ul.cards > li:hover { z-index: 10; cursor: pointer; box-shadow: #ff0 0px 0px 4px;}
+ul.cards li span { -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none; }
+
+div.hovercard { position: absolute; width: 268px; height: 366px; z-index: 20; background-size: inherit; }
+
+
+/*Deckklassen*/
+div.deckhead[data-class="6"] { ; background: url(img/counter/classes/class6_01.png) no-repeat center center;}
+
+/*ab hier kommen die Kartenhintergründe*/
+body.de_DE ul.cards li.card473 { background-image: url(img/counter/cards/de/473.png); }
+body.de_DE ul.cards li.card532 { background-image: url(img/counter/cards/de/532.png); }
+body.de_DE ul.cards li.card548 { background-image: url(img/counter/cards/de/548.png); }
+body.de_DE ul.cards li.card619 { background-image: url(img/counter/cards/de/619.png); }
+
+div.hovercard[data-card="473"] { background-image: url(img/cards/en/473n.png); }
+div.hovercard[data-card="532"] { background-image: url(img/cards/en/532n.png); }
+div.hovercard[data-card="548"] { background-image: url(img/cards/en/548n.png); }
+div.hovercard[data-card="619"] { background-image: url(img/cards/en/619n.png); }
