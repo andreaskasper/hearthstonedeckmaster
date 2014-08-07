@@ -1,6 +1,8 @@
 var lang_short = "de";
 var data;
 var dictionary = ["Spott","Taunt","Spell","Zauber"];
+var statk = ["minion","spell","weapon", "battlecry","stealth","charge","death","shield","enrage","freeze","overload","secret","silence","spelldmg","summon","wildfury","taunt","beast","demon","dragon","murloc","pirate","totem"];
+var statsmana;
 
 jQuery(function ($) {
   /*Setze Sprache*/
@@ -18,11 +20,12 @@ jQuery(function ($) {
 
   /*Formularevents*/
   $("INPUT[type='search']").on("keyup",function() { autocomplete($(this).val()); draw(); });
+  $("INPUT[type='search']").blur(function() { $("ul.search_autocomplete").fadeOut(200); });
   $(document).on("click","ul.search_autocomplete > li", function() { var a =$(this).text(); $("INPUT[type='search']").val(a); $("ul.search_autocomplete").html(''); draw(); });
   
-  $(".manawahl > span").click(function() {
+  $(".manawahl > li").click(function() {
 	var a = $(this).attr("data-value");
-	$(".manawahl > span").removeClass("active");
+	$(".manawahl > li").removeClass("active");
 	$(this).addClass("active");
 	draw();
   });
@@ -58,13 +61,13 @@ jQuery(function ($) {
 	document.location.hash = url;
   });
   
-  $(".deckhead span.name").click(function() {
+  $(".deckhead span.name").addClass("clickable").click(function() {
 	$(this).hide();
-	$(".deckhead INPUT").show();
+	$(".deckhead INPUT").show().focus();
   });
   
   $(".deckhead INPUT").blur(function() {
-	data["deck_name"] = $(this).val();
+	data["deck_name"] = $(this).val().replace(";","");
 	var url = reparser(data);
 	document.location.hash = url;
 	$(this).hide();
@@ -76,8 +79,13 @@ jQuery(function ($) {
 	document.location.href = "counter.html#"+url;
   });
   
+  $(".cardgroup li").click(function() {
+	$(".cardgroup li").removeClass("active");
+	$(this).addClass("active");
+	draw();
+  });
   
-  
+  for (var i = 0; i < statk.length; i++) $("ul.stats li."+statk[i]).hover ( function() { hovercardtype(function(b) { return (b[statk[i]] == true) ; }); },function() { unhovercardtype(); });
   
   $(window).on('hashchange', function() {
 	draw();
@@ -85,18 +93,42 @@ jQuery(function ($) {
   draw();
 });
 
+function hovercardtype(callback) {
+	var maxmanacount = 0;
+	for (var i = 0; i <= 7; i++) maxmanacount = Math.max(maxmanacount,statsmana[i]);
+	var statsmana2 = [0,0,0,0,0,0,0,0];
+	
+	for (var i = 0; i < data["cards"].length; i++) {
+		if (callback(data["cards"][i])) {
+			$("ul.selcards .card"+data["cards"]["id"]).addClass("highlight");
+			statsmana2[Math.min(7,data["cards"][i]["mana"])] += data["cards"][i]["anzahl"];
+			} else $("ul.selcards .card"+data["cards"][i]["id"]).addClass("nohighlight");
+	}
+	
+	for (var i = 0; i <= 7; i++) {
+		$(".managraph > .mana"+i+" > span").html(statsmana[i]);
+		$(".managraph > .mana"+i+" div.progress .v2").css("height",(100*statsmana2[i]/maxmanacount)+"%");
+	}
+}
+
+function unhovercardtype() {
+	$("ul.selcards > li").removeClass("highlight").removeClass("nohighlight");
+	$(".managraph .v2").css("height","0%");
+}
+
 function draw() {
 	var b = parser();
 	data = b;
 	if (data["class"]==0) {$("section.chooseclass").addClass("active"); $("section.choosecards").removeClass("active"); }else{ $("section.chooseclass").removeClass("active"); $("section.choosecards").addClass("active");}
 	
 	if (data["class"] > 0) {
+		$("section.choosecards").attr("data-class", data["class"]);
 		$(".deckhead").attr("data-class", data["class"]);
 		$(".deckhead span.name").text(data["deck_name"]);
 		$(".deckhead INPUT[name='name']").val(data["deck_name"]);
 	
 		var query = $("INPUT[type='search']").val();
-		var manaw = $(".manawahl > span.active").attr("data-value");
+		var manaw = $(".manawahl > li.active").attr("data-value");
 	
 		var c = $("<ul/>");
 		for (var i = 0; i < cards.length; i++) {
@@ -110,23 +142,30 @@ function draw() {
 		$("ul.allcards").html(c.html());
 	}
 	
-	var stats = {minion:0,spell:0};
+	var stats = {};
+	for (var i2 = 0; i2 < statk.length; i2++) stats[statk[i2]] = 0;
+	statsmana = [0,0,0,0,0,0,0,0];
 	var c2 = $("<ul/>");
 	var cardsumme = 0;
 	for (var i = 0; i < b["cards"].length; i++) {
+		statsmana[Math.min(7,b["cards"][i]["mana"])] += b["cards"][i]["anzahl"];
 		var c = $('<li><span class="cardname"/><span class="anzahl"></span></li>');
 		$(c).attr("data-id",b["cards"][i]["id"]).addClass("card"+b["cards"][i]["id"]);
 		$(c).attr("data-anzahl",b["cards"][i]["anzahl"]).find(".anzahl").attr("data-value",b["cards"][i]["anzahl"]).addClass("anzahl"+b["cards"][i]["anzahl"]).text(b["cards"][i]["anzahl"]);
 		$(c).attr("title", b["cards"][i]["name"]).find(".cardname").text(b["cards"][i]["name"]);
-		if (typeof b["cards"][i]["minion"] !== "undefined" && b["cards"][i]["minion"] == true) stats["minion"]+=b["cards"][i]["anzahl"];
-		if (typeof b["cards"][i]["spell"] !== "undefined" && b["cards"][i]["spell"] == true) stats["spell"]+=b["cards"][i]["anzahl"];
+		for (var i2 = 0; i2 < statk.length; i2++) if (typeof b["cards"][i][statk[i2]] !== "undefined" && b["cards"][i][statk[i2]] == true) stats[statk[i2]]+= b["cards"][i]["anzahl"];
 		$(c2).append(c);
 		cardsumme += b["cards"][i]["anzahl"]; 
 	}
+	var maxmanacount = 0;
+	for (var i = 0; i <= 7; i++) maxmanacount = Math.max(maxmanacount,statsmana[i]);
+	for (var i = 0; i <= 7; i++) {
+		$(".managraph > .mana"+i+" > span").html(statsmana[i]);
+		$(".managraph > .mana"+i+" div.progress .v1").css("height",(100*statsmana[i]/maxmanacount)+"%");
+	}
 	$("ul.selcards").html(c2.html());
 	$("div.cardcount span.value").text(cardsumme);
-	$("ul.stats li.minion .value").text(stats["minion"]);
-	$("ul.stats li.spell .value").text(stats["spell"]);
+	for (var i = 0; i < statk.length; i++) $("ul.stats li."+statk[i]+" .value").text(stats[statk[i]]);
 }
 
 function parser() {
@@ -154,6 +193,10 @@ function parser() {
 			}
 		out["cards"].push(b);
 	}
+	out["cards"].sort(function(a, b) {
+		if (a["mana"] == b["mana"]) { if (a["name"]>b["name"]) return 1; else return -1; }
+		return (a["mana"]-b["mana"]);
+	});
 	return out;
 }
 
@@ -171,7 +214,7 @@ function autocomplete( str) {
 		if (i2 > 10) break;
 		}
 	}
-	$("ul.search_autocomplete").html(o.html());
+	if (o.html() != "") $("ul.search_autocomplete").show().html(o.html());
 }
 
 function reparser(d) {

@@ -114,11 +114,14 @@ function parser() {
 		var d = get_carddata(b["id"]);
 		if (d["class"] > 0 && out["class"] != d["class"]) continue;
 		if (d == null) continue;
-		else {
-			b["name"] = d["name_"+lang_short];
-			}
+		b["mana"] = d["mana"];
+		b["name"] = d["name_"+lang_short];
 		out["cards"].push(b);
 	}
+	out["cards"].sort(function(a, b) {
+		if (a["mana"] == b["mana"]) { if (a["name"]>b["name"]) return 1; else return -1; }
+		return (a["mana"]-b["mana"]);
+	});
 	return out;
 }
 

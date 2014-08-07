@@ -39,11 +39,13 @@ div.hovercard { position: absolute; width: 268px; height: 366px; z-index: 20; ba
 div.deckhead[data-class="6"] { ; background: url(img/counter/classes/class6_01.png) no-repeat center center;}
 
 /*ab hier kommen die Kartenhintergründe*/
+body.de_DE ul.cards li.card473 { background-image: url(img/counter/cards/de/453.png); }
 body.de_DE ul.cards li.card473 { background-image: url(img/counter/cards/de/473.png); }
 body.de_DE ul.cards li.card532 { background-image: url(img/counter/cards/de/532.png); }
 body.de_DE ul.cards li.card548 { background-image: url(img/counter/cards/de/548.png); }
 body.de_DE ul.cards li.card619 { background-image: url(img/counter/cards/de/619.png); }
 
+div.hovercard[data-card="453"] { background-image: url(img/cards/en/453n.png); }
 div.hovercard[data-card="473"] { background-image: url(img/cards/en/473n.png); }
 div.hovercard[data-card="532"] { background-image: url(img/cards/en/532n.png); }
 div.hovercard[data-card="548"] { background-image: url(img/cards/en/548n.png); }

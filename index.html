@@ -28,17 +28,17 @@
 		<div class="header">
 		<a href="#" class="class" title="zurück zur Klassenwahl"></a>
 		<INPUT type="search" name="query"/><ul class="search_autocomplete"></ul>
-		<div class="manawahl">
-			<span class="mana manaall active" data-value="">alle</span>
-			<span class="mana mana0" data-value="0">0</span>
-			<span class="mana mana1" data-value="1">1</span>
-			<span class="mana mana2" data-value="2">2</span>
-			<span class="mana mana3" data-value="3">3</span>
-			<span class="mana mana4" data-value="4">4</span>
-			<span class="mana mana5" data-value="5">5</span>
-			<span class="mana mana6" data-value="6">6</span>
-			<span class="mana mana7" data-value="7">7+</span>
-		</div>
+		<ul class="manawahl">
+			<li class="mana manaall active" data-value="">alle</li>
+			<li class="mana mana0" data-value="0">0</li>
+			<li class="mana mana1" data-value="1">1</li>
+			<li class="mana mana2" data-value="2">2</li>
+			<li class="mana mana3" data-value="3">3</li>
+			<li class="mana mana4" data-value="4">4</li>
+			<li class="mana mana5" data-value="5">5</li>
+			<li class="mana mana6" data-value="6">6</li>
+			<li class="mana mana7" data-value="7">7+</li>
+		</ul>
 		<ul class="cardgroup">
 			<li class="class">Klasse</li>
 			<li class="neutral">Neutral</li>
@@ -52,22 +52,22 @@
 			<INPUT type="text" name="name" placeholder="Mein Deck"/>
 		</div>
 		<div class="managraph">
-			<div class="mana0"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana1"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana2"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana3"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana4"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana5"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana6"><span class="anzahl">0</span><div class="progress"><div/></div></div>
-			<div class="mana7"><span class="anzahl">0</span><div class="progress"><div/></div></div>
+			<div class="mana0"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana1"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana2"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana3"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana4"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana5"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana6"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
+			<div class="mana7"><span class="anzahl">0</span><div class="progress"><div class="v1"></div><div class="v2"></div></div></div>
 		</div>
 		<ul class="selcards"></ul>
 		<div class="cardcount"><span class="value">0</span>/30</div>
 		<div class="socialbuttons"><button class="counter">in den Counter übertragen</button><button class="facebook">Facebook</button><button class="twitter">Twitter</button></div>
 		<ul class="stats">
-			<li class="minion"><label>Diener:</label><span class="value">0</span></li>
-			<li class="spell"><label>Zauber:</label><span class="value">0</span></li>
-			<li class="weapon"><label>Waffen:</label><span class="value">0</span></li>
+			<li class="minion type0"><label>Diener:</label><span class="value">0</span></li>
+			<li class="spell type0"><label>Zauber:</label><span class="value">0</span></li>
+			<li class="weapon type0"><label>Waffen:</label><span class="value">0</span></li>
 			<li class="battlecry"><label>Kampfschrei:</label><span class="value">0</span></li>
 			<li class="stealth"><label>Verstohlenheit:</label><span class="value">0</span></li>
 			<li class="charge"><label>Ansturm:</label><span class="value">0</span></li>
@@ -82,6 +82,12 @@
 			<li class="summon"><label>Beschwörung:</label><span class="value">0</span></li>
 			<li class="windfury"><label>Windzorn:</label><span class="value">0</span></li>
 			<li class="taunt"><label>Spott:</label><span class="value">0</span></li>
+			<li class="beast"><label>Wildtier:</label><span class="value">0</span></li>
+			<li class="demon"><label>Dämon:</label><span class="value">0</span></li>
+			<li class="dragon"><label>Drache:</label><span class="value">0</span></li>
+			<li class="murloc"><label>Murloc:</label><span class="value">0</span></li>
+			<li class="pirate"><label>Pirat:</label><span class="value">0</span></li>
+			<li class="totem"><label>Totem:</label><span class="value">0</span></li>
 		</ul>
 	</section>
 </div>

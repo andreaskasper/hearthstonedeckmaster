@@ -8,21 +8,21 @@ section.chooseclass { margin: auto auto; width: 1031px; height: 837px; backgroun
 .overall > section { display: none; }
 .overall > section.active { display: block;}
 
-.manawahl > span { opacity: 0.5; }
-.manawahl > span:hover, .manawahl > span.active { opacity: 1; }
 
 
 
 ul.selcards { margin: 0px auto; padding: 0px; width: 224px; margin: }
-ul.selcards > li { display: block; position: relative; list-style:none; background-position: center center; background-repeat: no-repeat; width: 224px; height: 37px;}
+ul.selcards > li { display: block; cursor: pointer; position: relative; list-style:none; background-position: center center; background-repeat: no-repeat; width: 224px; height: 37px;}
 ul.selcards .cardname { display: none; }
 ul.selcards span.anzahl { position: absolute; right: 5px; line-height: 37px; font-size:20px; color: #FFC800; font-weight:bold; text-shadow: #000 0px 0px 1px; opacity: 0.9; }
 ul.selcards span.anzahl1 { display: none; }
 ul.selcards span.anzahl0 { display: none; }
 
-.deckhead INPUT{ display:none;}
+div.deckhead { position: absolute; width: 254px; top: 0px; right: 0px; height: 101px; }
+div.deckhead span.name { position: absolute; display: block; height: 30px; width: 220px; left: 23px; bottom: 20px; cursor: pointer; color: white; line-height:30px; font-weight:bold; }
+.deckhead INPUT{ display:none; position: absolute; height: 30px; width: 220px; left: 23px; bottom: 20px; background: none; color: white; border: none; }
 
-ul.allcards > li { display: inline-block; width: 268px; height: 366px; background-size: inherit; }
+
 
 section.chooseclass a { position: absolute;  width: 240px; height:200px; background: url(img/layout/heroes_sprite.png) no-repeat; opacity: 0.5; }
 section.chooseclass a.class1 { left: 100px; top:100px; background-position:0px 0px; }
@@ -37,17 +37,82 @@ section.chooseclass a.class9 { left: 700px; top:600px; background-position:-1920
 section.chooseclass a:hover { opacity: 1; }
 
 section.choosecards { position: relative; width:1000px; margin: 50px auto; background: #ffa; border: 1px solid #844;}
-div.deckhead { position: absolute; width: 254px; top: 0px; right: 0px; height: 101px; }
-section.choosecards .header { position: relative; }
+
+section.choosecards .header { position: relative; height: 75px; }
+section.choosecards .header INPUT[name='query'] { position: absolute; top: 10px; left: 35px; width: 100px; }
+section.choosecards .header a.class { position: absolute; top: 10px; left: 10px; width: 24px; height:24px;  }
+section.choosecards ul.cardgroup { position: absolute; left: 10px; bottom: 0px; list-style: none; padding: 0px; margin: 0px; }
+section.choosecards ul.cardgroup li { display: inline-block; }
+
+
+
+section.choosecards .manawahl { display: block; position: absolute; left: 150px; top: 10px; margin: 0px; padding: 0px; list-style: none; }
+section.choosecards .manawahl > li { display: inline-block; width: 24px; height: 24px; background: url(img/layout/mana.png) no-repeat 0px 0px; text-align: center; line-height:24px; font-size: 15px; color: white; text-shadow: #000 0px 0px 2px,#000 0px 0px 2px; opacity: 0.75; background-size: 24px auto; }
+section.choosecards .manawahl > li.active { background-position: 0px -48px; opacity: 1; }
+section.choosecards .manawahl > li:hover { opacity: 1; }
 ul.allcards { background: #ffc; width:740px; height: 500px; }
+ul.allcards > li { display: inline-block; width: 134px; height: 183px; background-size: cover; opacity: 0.9; cursor: pointer; }
+ul.allcards > li:hover { opacity: 1; cursor: pointer; }
+ul.allcards > li:active { opacity: 0.25; cursor: pointer; }
+
+section.choosecards div.managraph { position: absolute; height:90px; top:100px; right:0px; width: 244px; padding: 5px; background: url(img/layout/dark-wood.jpg) repeat-y center center; }
+div.managraph > div { width: 25px; height: 90%; display: inline-block; }
+div.managraph > div > span { display: block; color: white; width: 100%; text-align: center; }
+div.managraph > div > div.progress { position: relative; height: 70px; width: 22px; border: 1px solid #222; background: #444; border-radius: 3px; box-shadow: #888 1px 1px 1px; }
+div.managraph div.progress .v1 { position: absolute; background: #44f; width: 100%; bottom: 0px; left: 0px; border-radius: 4px; }
+div.managraph div.progress .v2 { position: absolute; background: #4f4; width: 100%; bottom: 0px; left: 0px; border-radius: 4px; }
+
+ul.selcards { position: absolute; right: 0px; top: 230px; width: 254px; background: url(img/layout/dark-wood.jpg) repeat-y center center; }
+ul.selcards li { margin: 0px auto; cursor: pointer; -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;}
+ul.selcards li.nohighlight { opacity: 0.25; filter: grayscale(100%);
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: url(desaturate.svg#greyscale);
+filter: gray;
+-webkit-filter: grayscale(1); }
+
+div.cardcount { position: absolute; width: 127px; height: 30px; top: 200px; right: 127px; background: url(img/layout/dark-wood.jpg) repeat-y 0px 0px; text-align: center; color: white; font-size: 20px; font-weight:bold; text-shadow: #88f 0px 0px 2px; }
+div.socialbuttons { position: absolute; width: 127px; height: 30px; top: 200px; right: 0px; background: url(img/layout/dark-wood.jpg) repeat-y -127px 0px; text-align: center; color: white; font-size: 20px; font-weight:bold; line-height: 30px; text-shadow: #88f 0px 0px 2px; }
+div.socialbuttons button.counter { display: inline-block; width: 24px; height: 24px; text-indent: -999px; overflow: hidden; background: url(img/icons/calc.png) no-repeat center center; border: none; cursor: pointer; background-size: cover; }
+div.socialbuttons button.facebook { display: inline-block; width: 24px; height: 24px; text-indent: -999px; overflow: hidden; background: url(img/icons/social_facebook_box_blue.png) no-repeat center center; border: none; cursor: pointer; background-size: cover; }
+div.socialbuttons button.twitter { display: inline-block; width: 24px; height: 24px; text-indent: -999px; overflow: hidden; background: url(img/icons/social_twitter_box_blue.png) no-repeat center center; border: none; cursor: pointer; background-size: cover; }
 
 
+div.managraph div.progress >div {
+    box-shadow: 5px 0px 5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;    
+	-webkit-animation: animate-glow 2s ease-out infinite;
+    animation: animate-glow 2s ease-out infinite;     
+	
+	-webkit-transition: height 1s ease-in-out;
+    -moz-transition: height 1s ease-in-out;
+    -o-transition: height 1s ease-in-out;
+    transition: height 1s ease-in-out;
+}
 
+ul.stats { background: #eee; list-style: none; padding: 0px; }
+ul.stats li { display: inline-block;  width: 24.5%; height:25px; text-align: center; border: 1px solid #888; margin-top: 3px;  }
+ul.stats li.type0 { width: 32%; font-weight: bold; }
+ul.stats li span { margin-left: 2px; }
+ul.stats li:hover { background: #8f8; border: 1px solid #000; }
+
+ul.search_autocomplete { position: absolute; display: none; left: 33px; top:18px; z-index: 10; background: #eee; padding: 0px; width: 100px; border: 1px solid #888; }
+ul.search_autocomplete li { display: block; color: black; list-style: none; line-height:20px; height:23px; border-bottom: 1px dotted #ccc; margin-left: 3px; }
+
+
+/*Karten*/
+ul.allcards li.card273 { background-image: url(img/cards/en/273n.png); }
+ul.allcards li.card453 { background-image: url(img/cards/en/453n.png); }
 ul.allcards li.card473 { background-image: url(img/cards/en/473n.png); }
 ul.allcards li.card532 { background-image: url(img/cards/en/532n.png); }
 ul.allcards li.card548 { background-image: url(img/cards/en/548n.png); }
 ul.allcards li.card619 { background-image: url(img/cards/en/619n.png); }
 
+body.de_DE ul.selcards li.card453 { background-image: url(img/counter/cards/de/453.png); }
 body.de_DE ul.selcards li.card473 { background-image: url(img/counter/cards/de/473.png); }
 body.de_DE ul.selcards li.card532 { background-image: url(img/counter/cards/de/532.png); }
 body.de_DE ul.selcards li.card548 { background-image: url(img/counter/cards/de/548.png); }
@@ -55,3 +120,24 @@ body.de_DE ul.selcards li.card619 { background-image: url(img/counter/cards/de/6
 
 /*Deckklassen*/
 div.deckhead[data-class="6"] { ; background: url(img/counter/classes/class6_01.png) no-repeat center center;}
+
+
+
+/*Animationen*/
+@keyframes animate-glow {
+ 0% { box-shadow: 5px 0px 5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;} 
+ 50% { box-shadow: 5px 0px 5px rgba(255, 255, 255, .3) inset, -5px 0 5px rgba(255, 255, 255, .3) inset;} 
+ 100% { box-shadow: 5px 0px 5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;}
+ }
+ 
+ @-webkit-keyframes animate-glow {
+		 0% { -webkit-box-shadow: 5px 0  5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;} 
+		 50% { -webkit-box-shadow: 5px 0 5px rgba(255, 255, 255, .3) inset, -5px 0 5px rgba(255, 255, 255, .3) inset;} 
+		 100% { -webkit-box-shadow: 5px 0 5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;}
+		 }
+
+		@-moz-keyframes animate-glow {
+		 0% { -moz-box-shadow: 5px 0 5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;} 
+		 50% { -moz-box-shadow: 5px 0 5px rgba(255, 255, 255, .3) inset, -5px 0 5px rgba(255, 255, 255, .3) inset;} 
+		 100% { -moz-box-shadow: 5px 0 5px rgba(255, 255, 255, .7) inset, -5px 0 5px rgba(255, 255, 255, .7) inset;}
+		 }
