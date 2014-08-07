@@ -21,6 +21,7 @@ jQuery(function ($) {
 	});
 	
 	$( document ).on("contextmenu","ul.cards > li",function() {
+		if (data["summe"] >= 30) return false;
 		var card_id =$(this).attr("data-id");
 		var d = data;
 		for (var i = 0; i < d["cards"].length; i++) {
@@ -78,6 +79,8 @@ function draw() {
 	}
 	$(".deckhead .cardcount .amount").text(cardsumme);
 	
+	data["summe"] = cardsumme;
+	
 	if (cardsumme < 1) cardsumme = 1;
 	
 	
@@ -94,14 +97,14 @@ function draw() {
 
 function parser() {
 	var out = {};
-	var regex = /c(\d);([^;]+)(;(.*))?/gi;
+	var regex = /c(\d)(;([^;]*)(;(.*))?)?/gi;
 	var match = regex.exec(document.location.hash);
 	if (match == null) return {class:0,deck_name:"",cards:[]};
 	out["class"] = match[1];
-	out["deck_name"] = match[2];
+	out["deck_name"] = match[3];
 	out["cards"] = [];
-	if (typeof match[4] === "undefined") return out;
-	var g = match[4].split(";");
+	if (typeof match[5] === "undefined") return out;
+	var g = match[5].split(";");
 	for (var i = 0; i < g.length; i++) {
 		var regex = /([0-9]{1,3}):([0-9]+)/gi;
 		var match = regex.exec(g[i]);

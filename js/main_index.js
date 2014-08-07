@@ -71,6 +71,10 @@ jQuery(function ($) {
 	$(".deckhead span.name").show();
   });
   
+  $(".socialbuttons button.counter").click(function() {
+	var url = reparser(data);
+	document.location.href = "counter.html#"+url;
+  });
   
   
   

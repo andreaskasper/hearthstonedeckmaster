@@ -1,7 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
 
-html, body { width: 100%;height:100%; margin: 0; padding: 0; font-family: Calibri,Arial, Sans-Serif; }
+html, body { width: 100%;height:100%; margin: 0; padding: 0; font-family: Calibri,Arial, Sans-Serif; background: black url(img/layout/bg01.jpg) no-repeat center center; vertical-align: center;  }
 img { border: 0px; }
+
+section.chooseclass { margin: auto auto; width: 1031px; height: 837px; background: url(img/layout/bg_page.jpg) no-repeat center center; position: relative;}
 
 .overall > section { display: none; }
 .overall > section.active { display: block;}
@@ -21,6 +23,18 @@ ul.selcards span.anzahl0 { display: none; }
 .deckhead INPUT{ display:none;}
 
 ul.allcards > li { display: inline-block; width: 268px; height: 366px; background-size: inherit; }
+
+section.chooseclass a { position: absolute;  width: 240px; height:200px; background: url(img/layout/heroes_sprite.png) no-repeat; opacity: 0.5; }
+section.chooseclass a.class1 { left: 100px; top:100px; background-position:0px 0px; }
+section.chooseclass a.class2 { left: 400px; top:100px; background-position:-240px 0px; }
+section.chooseclass a.class3 { left: 700px; top:100px; background-position:-480px 0px; }
+section.chooseclass a.class4 { left: 100px; top:350px; background-position:-720px 0px; }
+section.chooseclass a.class5 { left: 400px; top:350px; background-position:-960px 0px; }
+section.chooseclass a.class6 { left: 700px; top:350px; background-position:-1200px 0px; }
+section.chooseclass a.class7 { left: 100px; top:600px; background-position:-1440px 0px; }
+section.chooseclass a.class8 { left: 400px; top:600px; background-position:-1680px 0px; }
+section.chooseclass a.class9 { left: 700px; top:600px; background-position:-1920px 0px; }
+section.chooseclass a:hover { opacity: 1; }
 
 
 ul.allcards li.card473 { background-image: url(img/cards/en/473n.png); }
