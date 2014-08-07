@@ -36,6 +36,12 @@ section.chooseclass a.class8 { left: 400px; top:600px; background-position:-1680
 section.chooseclass a.class9 { left: 700px; top:600px; background-position:-1920px 0px; }
 section.chooseclass a:hover { opacity: 1; }
 
+section.choosecards { position: relative; width:1000px; margin: 50px auto; background: #ffa; border: 1px solid #844;}
+div.deckhead { position: absolute; width: 254px; top: 0px; right: 0px; height: 101px; }
+section.choosecards .header { position: relative; }
+ul.allcards { background: #ffc; width:740px; height: 500px; }
+
+
 
 ul.allcards li.card473 { background-image: url(img/cards/en/473n.png); }
 ul.allcards li.card532 { background-image: url(img/cards/en/532n.png); }
