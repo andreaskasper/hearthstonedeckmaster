@@ -61,6 +61,20 @@ jQuery(function ($) {
 	document.location.hash = url;
   });
   
+  $( document ).on("contextmenu","ul.allcards > li",function() {
+	var card_id = parseInt($(this).attr("data-id"));
+	var d = data;
+		for (var i = 0; i < d["cards"].length; i++) {
+			if (d["cards"][i]["id"] == card_id) {
+				d["cards"][i]["anzahl"]--;
+				break; 
+				}
+		}
+	var url = reparser(d);
+	document.location.hash = url;
+	return false;
+  });
+  
   $(".deckhead span.name").addClass("clickable").click(function() {
 	$(this).hide();
 	$(".deckhead INPUT").show().focus();
@@ -85,7 +99,7 @@ jQuery(function ($) {
 	draw();
   });
   
-  for (var i = 0; i < statk.length; i++) $("ul.stats li."+statk[i]).hover ( function() { hovercardtype(function(b) { return (b[statk[i]] == true) ; }); },function() { unhovercardtype(); });
+  for (var i = 0; i < statk.length; i++) $("ul.stats li."+statk[i]).hover ( function() { var j = $(this).attr("data-key"); hovercardtype(function(b) { return (b[j] == true) ; }); },function() { unhovercardtype(); });
   
   $(window).on('hashchange', function() {
 	draw();
@@ -185,6 +199,7 @@ function parser() {
 		if (typeof window.document.get["arena"] !== "undefined" && window.document.get["arena"] == "0") match[2] = Math.min(2,parseInt(match[2]));
 		var b = { id: parseInt(match[1]), anzahl: parseInt(match[2])};
 		var d = get_carddata(b["id"]);
+		if (d == null) continue;
 		if (d["class"] > 0 && out["class"] != d["class"]) continue;
 		if (d == null) continue;
 		else {

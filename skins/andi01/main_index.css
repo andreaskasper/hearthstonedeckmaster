@@ -43,6 +43,7 @@ section.choosecards .header INPUT[name='query'] { position: absolute; top: 10px;
 section.choosecards .header a.class { position: absolute; top: 10px; left: 10px; width: 24px; height:24px;  }
 section.choosecards ul.cardgroup { position: absolute; left: 10px; bottom: 0px; list-style: none; padding: 0px; margin: 0px; }
 section.choosecards ul.cardgroup li { display: inline-block; }
+section.choosecards ul.cardgroup li.active { font-weight:bold; }
 
 
 
