@@ -52,7 +52,7 @@ section.choosecards .manawahl > li { display: inline-block; width: 24px; height:
 section.choosecards .manawahl > li.active { background-position: 0px -48px; opacity: 1; }
 section.choosecards .manawahl > li:hover { opacity: 1; }
 ul.allcards { background: #ffc; width:740px; height: 500px; }
-ul.allcards > li { display: inline-block; width: 134px; height: 183px; background-size: cover; opacity: 0.9; cursor: pointer; }
+ul.allcards > li { display: inline-block; width: 134px; height: 183px; background-size: cover; opacity: 0.9; cursor: pointer; background-image: url(img/cards/en/leer.png)}
 ul.allcards > li:hover { opacity: 1; cursor: pointer; }
 ul.allcards > li:active { opacity: 0.25; cursor: pointer; }
 
