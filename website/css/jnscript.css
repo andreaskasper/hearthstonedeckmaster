@@ -1,0 +1,9 @@
+
+.hearthstone_deck { background: url(//hearthstone.justnetwork.eu/img/layout/dark-wood.jpg); padding-bottom: 5px; }
+.hearthstone_deck.left { float: left; }
+.hearthstone_deck.right { float: right; }
+.hearthstone_deck .classheader { display: block; position: relative; width: 254px; height: 101px; } 
+.hearthstone_deck .classheader.class_druid { background: url(//hearthstone.justnetwork.eu/img/counter_class6_01.png) no-repeat center center; }
+.hearthstone_deck .classheader .name { position: absolute; bottom: 22px; left: 25px; color: white; font-size: 20px; font-weight:700; font-family: Arial, Sans-Serif; }
+.hearthstone_deck .cardrow { display: block; position: relative; height: 37px; background: transparent no-repeat center center; }
+.hearthstone_deck .cardrow .quantity { line-height: 37px; position: absolute; right:25px; top:0px; height: 37px; color: #FFAE00; text-shadow: #ff0 0px 0px 1px,#000 0px 0px 2px; font-family: Arial, Sans-Serif; font-weight: 700; font-size: 18px; }

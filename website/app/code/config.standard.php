@@ -1,0 +1,1 @@
+<?php				SQL::init(0, "mysql://deckbuilder_user:deckbuilder_p4ssword!@localhost:3306/jn_deckbuilder/");	define("asi_configuration_loaded", true);	//define("debug", true);	$_ENV["baseurlpath"] = "/";		$_ENV["url_host"] = "hearthstone.justnetwork.eu";
